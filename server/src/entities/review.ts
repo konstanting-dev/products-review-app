@@ -1,8 +1,8 @@
 import { Column } from 'typeorm';
 
 export interface ReviewPayload {
-  reviewer?: string;
-  review: string;
+  reviewer: string;
+  review?: string;
   rating: number;
 }
 
@@ -15,10 +15,10 @@ export class Review {
     }
   }
 
-  @Column({ nullable: true })
+  @Column()
   reviewer: string;
 
-  @Column()
+  @Column({ nullable: true })
   review: string;
 
   @Column()

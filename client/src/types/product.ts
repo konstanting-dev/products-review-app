@@ -1,7 +1,6 @@
 export interface Review {
-  _id: string;
-  reviewer?: string;
-  review: string;
+  reviewer: string;
+  review?: string;
   rating: number;
 }
 
@@ -13,7 +12,5 @@ export interface Product {
   rating: number;
   reviews: Review[];
 }
-
-export type ProductPayload = Omit<Product, '_id'>;
 
 export type ReviewPayload = Omit<Review, '_id'>;

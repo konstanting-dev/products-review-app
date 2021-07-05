@@ -88,8 +88,8 @@ interface BaseModalProps {
 }
 
 const AddReviewModalSchema = yup.object().shape({
-  reviewer: yup.string(),
-  review: yup.string().required(),
+  reviewer: yup.string().required(),
+  review: yup.string(),
   rating: yup.number().required(),
 });
 
