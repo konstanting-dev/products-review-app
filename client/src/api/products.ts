@@ -8,7 +8,6 @@ export const getProducts = async () => {
 };
 
 export const addProductReview = async ({ id, reviewData }: { id: string; reviewData: ReviewPayload }) => {
-  const { data } = await api.post(`/products/${id}/review`, reviewData);
-  console.log(data);
+  const { data } = await api.patch(`/products/${id}/review`, reviewData);
   return data;
 };

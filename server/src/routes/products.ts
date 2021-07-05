@@ -6,6 +6,6 @@ import { AddReviewSchema } from './validationSchemes/review';
 const router = express.Router();
 
 router.get('/', ProductsController.list);
-router.post('/:id/review', validateBody(AddReviewSchema), ProductsController.addReview);
+router.patch('/:id/review', validateBody(AddReviewSchema), ProductsController.addReview);
 
 export default router;
