@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  mongodb:
+    image : mongo
+    env_file: .env
+    container_name: products_mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGODB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: ${TYPEORM_DATABASE}
+    volumes:
+      - ./mongo-init.sh:/docker-entrypoint-initdb.d/mongo-init.sh
+    ports:
+      - ${TYPEORM_PORT}:${TYPEORM_PORT}
+    restart: always
+  server:
+    image: node:12-alpine
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    restart: on-failure
+    container_name: products_server
+    working_dir: /app
+    command: /bin/sh -c "npm install && npm run dev:server && echo 'Server is ready'"
+    volumes:
+      - ./server:/app:rw
+      - ./docker/server/logs:/root/.npm/_logs
+    env_file: .env

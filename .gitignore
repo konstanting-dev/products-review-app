@@ -1,0 +1,10 @@
+/.idea
+.env
+/log
+/var
+docker/server/logs
+docker/client/logs
+docker/notifier/logs
+docker/pg/data
+/node_modules/
+/.build/
